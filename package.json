@@ -1,0 +1,27 @@
+{
+  "name": "wordfortoday",
+  "version": "1.0.0",
+  "description": "This app posts daily bible verses on twitter",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodeman app.js",
+    "build": "node app.js"
+  },
+  "author": "Somadina Eze",
+  "license": "ISC",
+  "dependencies": {
+    "@bible-api/bible-api": "^0.11.0",
+    "@bible-api/bible-api-version-kjv1769": "^1.0.0",
+    "@bible-api/bible-api-version-tr1624": "^1.0.0",
+    "axios": "^1.6.7",
+    "bible-api": "^1.0.6",
+    "dotenv": "^16.4.5",
+    "nodeman": "^1.1.2",
+    "random-item": "^4.0.1",
+    "twit": "^2.2.11",
+    "twitter-api-v2": "^1.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24"
+  }
+}
