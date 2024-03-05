@@ -1,23 +1,23 @@
 const bibleApi = require("@bible-api/bible-api");
 const axios = require("axios");
 
-const getRandomVerse = async (props) => {
+const getRandomVerse = async (param) => {
+  const axiosConfig = {
+    url: `https://beta.ourmanna.com/api/v1/get?format=json&order=${param}`, //random or daily
+    method: "get",
+    headers: { accept: "application/json" },
+  };
   try {
-    const verse = await bibleApi.localVersions.kjv1769.getVerse({
-      bookId: bibleApi.BookIdentifiers[props.BookIdentifiers],
-      chapterNumber: props.chapterNumber,
-      verseNumber: props.verseNumber,
-    });
-
-    return verse;
+    const response = await axios(axiosConfig);
+    return response.data.verse.details;
   } catch (error) {
-    throw new Error("Verse does not exist");
+    return error;
   }
 };
 
-async function getRandomVerseV2() {
+async function getRandomVerseV2(param) {
   const axiosConfig = {
-    url: "https://labs.bible.org/api/?passage=random&type=json", //votd
+    url: `https://labs.bible.org/api/?passage=${param}&type=json`, //votd or random
     timeout: 1000,
     responseType: "text",
     transformResponse: (data) => {
@@ -29,7 +29,7 @@ async function getRandomVerseV2() {
     const response = await axios(axiosConfig);
     return response.data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 }
 
