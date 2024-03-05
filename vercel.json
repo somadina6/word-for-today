@@ -1,6 +1,7 @@
 {
   "name": "bible-verse-bot",
   "version": 2,
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "crons": [
     {
       "path": "/api/tweet/tweetVOTD",
