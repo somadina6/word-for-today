@@ -1,5 +1,5 @@
 {
-  "name": "bible-verse-bot",
+  "name": "word-for-today",
   "version": 2,
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "crons": [
