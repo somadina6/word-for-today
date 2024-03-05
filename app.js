@@ -122,7 +122,7 @@ console.log(delayRandomVerse, delayRandomVerseV2, delayVOTD, delayVOTDV2);
 setTimeout(() => {
   tweetVOTD();
   setInterval(tweetVOTD, 86400000); // Repeat every 24 hours
-}, delayVOTD);
+}, 0);
 
 setTimeout(() => {
   tweetVOTDV2();
@@ -131,12 +131,12 @@ setTimeout(() => {
 
 setTimeout(() => {
   tweetRandomVerse();
-  setInterval(tweetRandomVerse, 86400000 / 6); // Repeat every 24/6 hours
+  setInterval(tweetRandomVerse, 86400000 / 12); // Repeat every 24/12 hours
 }, delayRandomVerse);
 
 setTimeout(() => {
   tweetRandomVerseV2();
-  setInterval(tweetRandomVerseV2, 86400000 / 6); // Repeat every 24/6 hours
+  setInterval(tweetRandomVerseV2, 86400000 / 12); // Repeat every 24/12 hours
 }, delayRandomVerseV2);
 
 // setInterval(tweetRandomVerse, 10000);
