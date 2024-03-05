@@ -2,7 +2,5 @@
   "version": 1,
   "name": "word-for-today",
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }],
-  "orgId": "team_Q14SPFVpfiI4UexK2xBN2REr",
-  "projectId": "prj_H83saRQem5Uq9w7Ugl36PXkf7FZ3"
+  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }
