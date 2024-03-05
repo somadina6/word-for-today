@@ -5,7 +5,9 @@ const {
   tweetRandomVerseV2,
 } = require("./api/tweet");
 
-tweetRandomVerse();
+setInterval(() => {
+  tweetRandomVerse();
+}, 5000);
 module.exports = {
   tweetVOTD,
   tweetVOTDV2,
