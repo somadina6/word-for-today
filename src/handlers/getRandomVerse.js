@@ -1,4 +1,3 @@
-const bibleApi = require("@bible-api/bible-api");
 const axios = require("axios");
 
 const getRandomVerse = async (param) => {
