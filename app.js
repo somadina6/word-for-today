@@ -117,12 +117,12 @@ if (delayVOTD < 0) delayVOTD += 86400000; // Add 24 hours in milliseconds
 if (delayVOTDV2 < 0) delayVOTDV2 += 86400000;
 if (delayRandomVerse < 0) delayRandomVerse += 86400000;
 if (delayRandomVerseV2 < 0) delayRandomVerseV2 += 86400000;
-console.log(delayRandomVerse, delayRandomVerseV2, delayVOTD, delayVOTDV2);
+console.log("App Is Live!");
 // Set intervals for each function with different delays
 setTimeout(() => {
   tweetVOTD();
   setInterval(tweetVOTD, 86400000); // Repeat every 24 hours
-}, 0);
+}, delayVOTD);
 
 setTimeout(() => {
   tweetVOTDV2();
