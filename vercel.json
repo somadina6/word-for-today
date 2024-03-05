@@ -1,7 +1,7 @@
 {
   "name": "word-for-today",
-  "buildCommand": "node app.js",
   "version": 2,
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "crons": [
     {
       "path": "/api/tweet/tweetVOTD",
