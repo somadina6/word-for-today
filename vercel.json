@@ -10,14 +10,6 @@
     {
       "path": "/api/tweet/tweetVOTDV2",
       "schedule": "0 13 * * *"
-    },
-    {
-      "path": "/api/tweet/tweetRandomVerse",
-      "schedule": "0 */2 * * *"
-    },
-    {
-      "path": "/api/tweet/tweetRandomVerseV2",
-      "schedule": "0 */2 * * *"
     }
   ]
 }
