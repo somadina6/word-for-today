@@ -4,18 +4,25 @@ const {
   getRandomVerseV2,
 } = require("./src/handlers/getRandomVerse");
 
-async function tweetRandomVerseV2() {
+async function postTweet(text) {
   try {
     const client = await initializeTwitterClient();
+    client.v2.tweet({ text: text });
+    console.log("Tweeted!\n", text, "\n");
+  } catch (error) {
+    console.error("Error tweeting:", error);
+  }
+}
+
+async function tweetRandomVerseV2() {
+  try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("random");
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    console.log(tweet);
-
-    client.v2.tweet({ text: tweet });
+    postTweet(tweet);
   } catch (error) {
-    console.log(error.message);
+    console.error("Error tweeting:", error);
   }
 }
 
@@ -26,11 +33,9 @@ async function tweetVOTDV2() {
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    console.log("Tweet Of The Day V2\n", tweet);
-
     client.v2.tweet({ text: tweet });
   } catch (error) {
-    console.log(error.message);
+    console.error("Error tweeting:", error);
   }
 }
 
@@ -40,11 +45,11 @@ async function tweetRandomVerse() {
     const { reference, text } = await getRandomVerse("random");
 
     const tweet = `${text} - ${reference}`;
-    console.log(tweet);
+    console.log("Tweeted!\n", tweet, "\n");
 
     client.v2.tweet({ text: tweet });
   } catch (error) {
-    console.log(error.message);
+    console.error("Error tweeting:", error);
   }
 }
 
@@ -53,90 +58,18 @@ async function tweetVOTD() {
     const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("daily");
     const tweet = `${text} - ${reference}`;
-    console.log("Tweet Of The Day\n", tweet);
+    console.log("Tweet Of The Day\n", tweet, "\n");
 
     client.v2.tweet({ text: tweet });
   } catch (error) {
-    console.log(error.message);
+    console.error("Error tweeting:", error);
   }
 }
 
-// tweetVOTD();
-// tweetVOTDV2();
-// tweetRandomVerse();
-// tweetRandomVerseV2();
-
-// Calculate the current date
-const currentDate = new Date();
-
-// Calculate the milliseconds until the next desired time for each function to run
-// For demonstration purposes, let's say you want each function to run at different times of the day
-// Adjust these values according to your desired times
-let delayVOTD =
-  new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate(),
-    8,
-    0,
-    0,
-    0
-  ) - currentDate; // 8:00 AM
-let delayVOTDV2 =
-  new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate(),
-    12,
-    0,
-    0,
-    0
-  ) - currentDate; // 12:00 PM
-let delayRandomVerse =
-  new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate(),
-    16,
-    0,
-    0,
-    0
-  ) - currentDate; // 4:00 PM
-let delayRandomVerseV2 =
-  new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate(),
-    20,
-    0,
-    0,
-    0
-  ) - currentDate; // 8:00 PM
-// Adjust the delays if they are negative
-if (delayVOTD < 0) delayVOTD += 86400000; // Add 24 hours in milliseconds
-if (delayVOTDV2 < 0) delayVOTDV2 += 86400000;
-if (delayRandomVerse < 0) delayRandomVerse += 86400000;
-if (delayRandomVerseV2 < 0) delayRandomVerseV2 += 86400000;
-console.log("App Is Live!");
-// Set intervals for each function with different delays
-setTimeout(() => {
-  tweetVOTD();
-  setInterval(tweetVOTD, 86400000); // Repeat every 24 hours
-}, delayVOTD);
-
-setTimeout(() => {
-  tweetVOTDV2();
-  setInterval(tweetVOTDV2, 86400000); // Repeat every 24 hours
-}, delayVOTDV2);
-
-setTimeout(() => {
-  tweetRandomVerse();
-  setInterval(tweetRandomVerse, 86400000 / 12); // Repeat every 24/12 hours
-}, delayRandomVerse);
-
-setTimeout(() => {
-  tweetRandomVerseV2();
-  setInterval(tweetRandomVerseV2, 86400000 / 12); // Repeat every 24/12 hours
-}, delayRandomVerseV2);
-
-// setInterval(tweetRandomVerse, 10000);
+module.exports = {
+  tweetVOTD,
+  tweetVOTDV2,
+  tweetRandomVerse,
+  tweetRandomVerseV2,
+  postTweet,
+};
