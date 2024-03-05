@@ -1,7 +1,7 @@
 {
   "name": "word-for-today",
+  "buildCommand": "node app.js",
   "version": 2,
-
   "crons": [
     {
       "path": "/api/tweet/tweetVOTD",
