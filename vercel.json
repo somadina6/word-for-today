@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "name": "word-for-today",
-  "builds": [{ "src": "/app.js", "use": "@vercel/node" }]
-}
