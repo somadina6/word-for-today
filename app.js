@@ -49,7 +49,7 @@ async function tweetRandomVerse() {
 
     client.v2.tweet({ text: tweet });
   } catch (error) {
-    console.error("Error tweeting:", error);
+    console.error("Error tweeting: ", error);
   }
 }
 
