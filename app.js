@@ -5,6 +5,7 @@ const {
   tweetRandomVerseV2,
 } = require("./api/tweet");
 
+tweetRandomVerse();
 module.exports = {
   tweetVOTD,
   tweetVOTDV2,

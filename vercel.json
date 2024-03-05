@@ -1,23 +1,22 @@
 {
   "name": "bible-verse-bot",
   "version": 2,
-  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-  "functions": {
-    "schedule-tweet-random-verse": {
-      "entryPoint": "tweetRandomVerse",
-      "schedule": "cron(0 */2 * * *)"
+  "crons": [
+    {
+      "path": "/api/tweet/tweetVOTD",
+      "schedule": "0 15 * * *"
     },
-    "schedule-tweet-votd": {
-      "entryPoint": "tweetVOTD",
-      "schedule": "cron(0 13 * * *)"
+    {
+      "path": "/api/tweet/tweetVOTDV2",
+      "schedule": "0 13 * * *"
     },
-    "schedule-tweet-random-verseV2": {
-      "entryPoint": "tweetRandomVerseV2",
-      "schedule": "cron(0 */2 * * *)"
+    {
+      "path": "/api/tweet/tweetRandomVerse",
+      "schedule": "0 */2 * * *"
     },
-    "schedule-tweet-votdV2": {
-      "entryPoint": "tweetVOTDV2",
-      "schedule": "cron(0 13 * * *)"
+    {
+      "path": "/api/tweet/tweetRandomVerseV2",
+      "schedule": "0 */2 * * *"
     }
-  }
+  ]
 }
