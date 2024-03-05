@@ -4,22 +4,18 @@
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "functions": {
     "schedule-tweet-random-verse": {
-      "src": "app.js",
       "entryPoint": "tweetRandomVerse",
       "schedule": "cron(0 */2 * * *)"
     },
     "schedule-tweet-votd": {
-      "src": "app.js",
       "entryPoint": "tweetVOTD",
       "schedule": "cron(0 13 * * *)"
     },
     "schedule-tweet-random-verseV2": {
-      "src": "app.js",
       "entryPoint": "tweetRandomVerseV2",
       "schedule": "cron(0 */2 * * *)"
     },
     "schedule-tweet-votdV2": {
-      "src": "app.js",
       "entryPoint": "tweetVOTDV2",
       "schedule": "cron(0 13 * * *)"
     }
