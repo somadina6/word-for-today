@@ -4,5 +4,5 @@
   "buildCommand": "node app.js",
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/app.js" }],
-  "crons": [{ "path": "/tweet/votd2", "schedule": "30 21 * * *" }]
+  "crons": [{ "path": "/tweet/random", "schedule": "38 1 * * *" }]
 }
