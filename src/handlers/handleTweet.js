@@ -106,6 +106,13 @@ async function tweetVOTD(req, res) {
   }
 }
 
+async function handleHome(req,res) {
+  res.status(200).json({
+    success:true,
+    message: 'Word For Today API is live!"
+  })
+}
+
 module.exports = {
   tweetVOTD,
   tweetVOTDV2,
