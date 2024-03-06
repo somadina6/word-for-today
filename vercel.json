@@ -1,6 +1,5 @@
 {
   "name": "word-for-today",
   "version": 2,
-  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "buildCommand": "node app.js"
 }
