@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const routes = require("./src/routes/main");
 const express = require("express");
-const { handleHome } = require("./src/handlers/handleTweet")
+const { handleHome } = require("./src/handlers/handleTweet");
 
 const app = express();
 dotenv.config();

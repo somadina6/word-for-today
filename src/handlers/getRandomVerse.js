@@ -7,7 +7,9 @@ const getRandomVerse = async (param) => {
     headers: { accept: "application/json" },
   };
   try {
+    console.log('Retrieving verse now...\n')
     const response = await axios(axiosConfig);
+    console.log('Verse retrieved successfully...\n')
     return response.data.verse.details;
   } catch (error) {
     console.error(error)
@@ -26,7 +28,9 @@ async function getRandomVerseV2(param) {
   };
 
   try {
+    console.log('Retrieving verse now...\n')
     const response = await axios(axiosConfig);
+    console.log('Verse retrieved successfully...\n')
     return response.data;
   } catch (error) {
     console.error(error)
