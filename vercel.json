@@ -2,10 +2,5 @@
   "name": "word-for-today",
   "version": 2,
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-  "crons": [
-    {
-      "path": "/api/tweet/tweetRandomVerse",
-      "schedule": "14 20 * * *"
-    }
-  ]
+  "buildCommand": "node app.js"
 }
