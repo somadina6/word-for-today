@@ -51,7 +51,7 @@ async function tweetVOTDV2(req, res) {
     });
   }
 }
-async function tweetRandomVerse() {
+async function tweetRandomVerse(req, res) {
   try {
     const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("random");
