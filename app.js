@@ -8,3 +8,5 @@ const {
 setInterval(() => {
   tweetRandomVerse();
 }, 5000);
+
+module.exports = tweetRandomVerse;
