@@ -10,7 +10,8 @@ const getRandomVerse = async (param) => {
     const response = await axios(axiosConfig);
     return response.data.verse.details;
   } catch (error) {
-    return error;
+    console.error(error)
+    throw new Error(error)
   }
 };
 
@@ -28,7 +29,8 @@ async function getRandomVerseV2(param) {
     const response = await axios(axiosConfig);
     return response.data;
   } catch (error) {
-    return error;
+    console.error(error)
+    throw new Error(error)
   }
 }
 

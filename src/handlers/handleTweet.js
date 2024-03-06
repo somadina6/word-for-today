@@ -8,7 +8,8 @@ async function postTweet(text) {
     await client.v2.tweet({ text: text });
     console.log("Tweeted!\n", text, "\n");
   } catch (error) {
-    console.log("Error tweeting:", error);
+    console.error(error)
+    throw new Error(error)
   }
 }
 
@@ -35,7 +36,7 @@ async function tweetRandomVerseV2(req, res) {
     console.error("Error tweeting: ", error);
     res.status(400).json({
       success: false,
-      message: error.meesage,
+      message: error,
     });
   }
 }
@@ -109,7 +110,7 @@ async function tweetVOTD(req, res) {
 async function handleHome(req,res) {
   res.status(200).json({
     success:true,
-    message: 'Word For Today API is live!"
+    message: "Word For Today API is live!"
   })
 }
 

@@ -9,9 +9,11 @@ const initializeTwitterClient = async () => {
       accessToken: process.env.TWITTER_ACCESS_TOKEN,
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     });
+    console.log('Successfully connected to Twitter API!\n')
     return client;
   } catch (error) {
-    console.log(error);
+    console.error(error)
+    throw new Error(error)
   }
 };
 
