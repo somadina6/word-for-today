@@ -11,7 +11,7 @@ const initializeTwitterClient = async () => {
     });
     return client;
   } catch (error) {
-    return new Error(error);
+    console.log(error);
   }
 };
 

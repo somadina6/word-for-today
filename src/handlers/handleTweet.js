@@ -8,7 +8,7 @@ async function postTweet(text) {
     client.v2.tweet({ text: text });
     console.log("Tweeted!\n", text, "\n");
   } catch (error) {
-    console.error("Error tweeting:", error);
+    console.log("Error tweeting:", error);
   }
 }
 
