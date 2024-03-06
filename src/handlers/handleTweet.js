@@ -1,8 +1,5 @@
-const initializeTwitterClient = require("../src/config/twitter.config");
-const {
-  getRandomVerse,
-  getRandomVerseV2,
-} = require("../src/handlers/getRandomVerse");
+const initializeTwitterClient = require("../config/twitter.config");
+const { getRandomVerse, getRandomVerseV2 } = require("./getRandomVerse");
 
 async function postTweet(text) {
   try {
@@ -21,8 +18,16 @@ async function tweetRandomVerseV2() {
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
     postTweet(tweet);
+    res.status(200).json({
+      success: true,
+      message: "Tweeted",
+    });
   } catch (error) {
-    console.error("Error tweeting:", error);
+    console.error("Error tweeting: ", error);
+    res.status(400).json({
+      success: false,
+      message: error.meesage,
+    });
   }
 }
 
@@ -34,11 +39,18 @@ async function tweetVOTDV2() {
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
     client.v2.tweet({ text: tweet });
+    res.status(200).json({
+      success: true,
+      message: "Tweeted",
+    });
   } catch (error) {
-    console.error("Error tweeting:", error);
+    console.error("Error tweeting: ", error);
+    res.status(400).json({
+      success: false,
+      message: error.meesage,
+    });
   }
 }
-
 async function tweetRandomVerse() {
   try {
     const client = await initializeTwitterClient();
@@ -48,12 +60,21 @@ async function tweetRandomVerse() {
     console.log("Tweeted!\n", tweet, "\n");
 
     client.v2.tweet({ text: tweet });
+
+    res.status(200).json({
+      success: true,
+      message: "Tweeted",
+    });
   } catch (error) {
     console.error("Error tweeting: ", error);
+    res.status(400).json({
+      success: false,
+      message: error.meesage,
+    });
   }
 }
 
-async function tweetVOTD() {
+async function tweetVOTD(req, res) {
   try {
     const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("daily");
@@ -61,8 +82,16 @@ async function tweetVOTD() {
     console.log("Tweet Of The Day\n", tweet, "\n");
 
     client.v2.tweet({ text: tweet });
+    res.status(200).json({
+      success: true,
+      message: "Tweeted",
+    });
   } catch (error) {
-    console.error("Error tweeting:", error);
+    console.error("Error tweeting: ", error);
+    res.status(400).json({
+      success: false,
+      message: error.meesage,
+    });
   }
 }
 

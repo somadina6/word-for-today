@@ -1,10 +1,19 @@
-const {
-  tweetVOTD,
-  tweetVOTDV2,
-  tweetRandomVerse,
-  tweetRandomVerseV2,
-} = require("./api/tweet");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const routes = require("./src/routes/main");
+
+dotenv.config();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: "false" }));
+app.use(bodyParser.json());
+app.use(routes);
 
 setInterval(() => {
   tweetRandomVerse();
 }, 5000);
+
+const port = process.env.PORT || 4000;
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});
