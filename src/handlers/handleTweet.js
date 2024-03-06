@@ -3,6 +3,7 @@ const { getRandomVerse, getRandomVerseV2 } = require("./getRandomVerse");
 
 async function postTweet(text) {
   try {
+    console.log("Connecting to Twitter API");
     const client = await initializeTwitterClient();
     client.v2.tweet({ text: text });
     console.log("Tweeted!\n", text, "\n");
