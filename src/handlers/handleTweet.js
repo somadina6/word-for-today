@@ -16,6 +16,14 @@ async function tweetRandomVerseV2(req, res) {
   try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("random");
 
+    if( !text || !bookname || !chapter || !verse){
+      res.status(501).json({
+        success: false,
+        message: "Error retrieving verse from the API",
+      })
+      throw new Error("Error retrieving verse from the API")
+    }
+
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
     await postTweet(tweet);
@@ -35,6 +43,14 @@ async function tweetRandomVerseV2(req, res) {
 async function tweetVOTDV2(req, res) {
   try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("votd");
+
+     if( !text || !bookname || !chapter || !verse){
+      res.status(501).json({
+        success: false,
+        message: "Error retrieving verse from the API",
+      })
+      throw new Error("Error retrieving verse from the API")
+    }
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
