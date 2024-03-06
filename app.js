@@ -8,9 +8,3 @@ const {
 setInterval(() => {
   tweetRandomVerse();
 }, 5000);
-module.exports = {
-  tweetVOTD,
-  tweetVOTDV2,
-  tweetRandomVerse,
-  tweetRandomVerseV2,
-};
