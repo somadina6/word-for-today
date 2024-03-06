@@ -119,4 +119,5 @@ module.exports = {
   tweetRandomVerse,
   tweetRandomVerseV2,
   postTweet,
+  handleHome
 };
