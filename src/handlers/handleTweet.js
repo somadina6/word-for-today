@@ -71,7 +71,13 @@ async function tweetVOTDV2(req, res) {
 async function tweetRandomVerse(req, res) {
   try {
     const { reference, text } = await getRandomVerse("random");
-
+    if( !text || !reference ){
+      res.status(501).json({
+        success: false,
+        message: "Error retrieving verse from the API",
+      })
+      throw new Error("Error retrieving verse from the API")
+    }
     const tweet = `${text} - ${reference}`;
     await postTweet(tweet);
 
@@ -91,6 +97,15 @@ async function tweetRandomVerse(req, res) {
 async function tweetVOTD(req, res) {
   try {
     const { reference, text } = await getRandomVerse("daily");
+    
+    if( !text || !reference ){
+      res.status(501).json({
+        success: false,
+        message: "Error retrieving verse from the API",
+      })
+      throw new Error("Error retrieving verse from the API")
+    }
+
     const tweet = `${text} - ${reference}`;
     await postTweet(tweet);
 
