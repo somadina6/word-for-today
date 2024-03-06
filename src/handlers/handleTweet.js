@@ -38,7 +38,7 @@ async function tweetVOTDV2(req, res) {
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    client.v2.tweet({ text: tweet });
+    postTweet(tweet);
     res.status(200).json({
       success: true,
       message: "Tweeted",
@@ -57,20 +57,18 @@ async function tweetRandomVerse() {
     const { reference, text } = await getRandomVerse("random");
 
     const tweet = `${text} - ${reference}`;
-    console.log("Tweeted!\n", tweet, "\n");
+    postTweet(tweet);
 
-    client.v2.tweet({ text: tweet });
-
-    // res.status(200).json({
-    //   success: true,
-    //   message: "Tweeted",
-    // });
+    res.status(200).json({
+      success: true,
+      message: "Tweeted",
+    });
   } catch (error) {
     console.error("Error tweeting: ", error);
-    // res.status(400).json({
-    //   success: false,
-    //   message: error.meesage,
-    // });
+    res.status(400).json({
+      success: false,
+      message: error.meesage,
+    });
   }
 }
 
@@ -79,7 +77,7 @@ async function tweetVOTD(req, res) {
     const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("daily");
     const tweet = `${text} - ${reference}`;
-    console.log("Tweet Of The Day\n", tweet, "\n");
+    postTweet(tweet);
 
     client.v2.tweet({ text: tweet });
     res.status(200).json({
