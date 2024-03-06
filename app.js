@@ -12,10 +12,6 @@ app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(bodyParser.json());
 app.use(routes);
 
-setInterval(() => {
-  tweetRandomVerse();
-}, 5000);
-
 const port = process.env.PORT || 4000;
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
