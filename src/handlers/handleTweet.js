@@ -17,10 +17,10 @@ async function tweetRandomVerseV2(req, res) {
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    postTweet(tweet);
+    await postTweet(tweet);
     res.status(200).json({
       success: true,
-      message: "Tweeted",
+      message: "Tweeted Random!",
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -33,15 +33,14 @@ async function tweetRandomVerseV2(req, res) {
 
 async function tweetVOTDV2(req, res) {
   try {
-    const client = await initializeTwitterClient();
     const { bookname, chapter, verse, text } = await getRandomVerseV2("votd");
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    postTweet(tweet);
+    await postTweet(tweet);
     res.status(200).json({
       success: true,
-      message: "Tweeted",
+      message: "Tweeted Verse Of The Day 2",
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -53,15 +52,14 @@ async function tweetVOTDV2(req, res) {
 }
 async function tweetRandomVerse(req, res) {
   try {
-    const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("random");
 
     const tweet = `${text} - ${reference}`;
-    postTweet(tweet);
+    await postTweet(tweet);
 
     res.status(200).json({
       success: true,
-      message: "Tweeted",
+      message: "Tweeted Random",
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -74,15 +72,13 @@ async function tweetRandomVerse(req, res) {
 
 async function tweetVOTD(req, res) {
   try {
-    const client = await initializeTwitterClient();
     const { reference, text } = await getRandomVerse("daily");
     const tweet = `${text} - ${reference}`;
-    postTweet(tweet);
+    await postTweet(tweet);
 
-    client.v2.tweet({ text: tweet });
     res.status(200).json({
       success: true,
-      message: "Tweeted",
+      message: "Tweeted Verse Of The Day",
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
