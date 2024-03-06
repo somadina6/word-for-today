@@ -11,7 +11,7 @@ async function postTweet(text) {
   }
 }
 
-async function tweetRandomVerseV2() {
+async function tweetRandomVerseV2(req, res) {
   try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("random");
 
@@ -31,7 +31,7 @@ async function tweetRandomVerseV2() {
   }
 }
 
-async function tweetVOTDV2() {
+async function tweetVOTDV2(req, res) {
   try {
     const client = await initializeTwitterClient();
     const { bookname, chapter, verse, text } = await getRandomVerseV2("votd");
@@ -61,16 +61,16 @@ async function tweetRandomVerse() {
 
     client.v2.tweet({ text: tweet });
 
-    res.status(200).json({
-      success: true,
-      message: "Tweeted",
-    });
+    // res.status(200).json({
+    //   success: true,
+    //   message: "Tweeted",
+    // });
   } catch (error) {
     console.error("Error tweeting: ", error);
-    res.status(400).json({
-      success: false,
-      message: error.meesage,
-    });
+    // res.status(400).json({
+    //   success: false,
+    //   message: error.meesage,
+    // });
   }
 }
 
