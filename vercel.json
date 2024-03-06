@@ -1,7 +1,10 @@
 {
   "name": "word-for-today",
   "version": 2,
-  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
+  "builds": [
+    { "src": "app.js", "use": "@vercel/node" },
+    { "src": "/api/tweet.js", "use": "@vercel/node" }
+  ],
   "crons": [
     {
       "path": "/api/tweet/tweetVOTD",
