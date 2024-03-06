@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const initializeTwitterClient = async () => {
   try {
-    const client = new TwitterApi({
+    const client = await new TwitterApi({
       appKey: process.env.TWITTER_APP_TOKEN,
       appSecret: process.env.TWITTER_APP_SECRET,
       accessToken: process.env.TWITTER_ACCESS_TOKEN,
