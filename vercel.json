@@ -2,6 +2,6 @@
   "name": "word-for-today",
   "version": 2,
   "buildCommand": "node app.js",
-  "builds": [{ "src": "somas.js", "use": "@vercel/node" }],
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }
