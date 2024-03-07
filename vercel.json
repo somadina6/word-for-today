@@ -2,5 +2,5 @@
   "name": "word-for-today",
   "version": 2,
   "buildCommand": "node app.js",
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }]
 }
