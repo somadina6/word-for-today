@@ -3,6 +3,5 @@
   "version": 2,
   "buildCommand": "node app.js",
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }],
-  "crons": [{ "path": "/tweet/random", "schedule": "38 1 * * *" }]
+  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }
