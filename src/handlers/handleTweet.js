@@ -5,7 +5,7 @@ async function postTweet(text) {
   try {
     console.log("Connecting to Twitter API");
     const client = await initializeTwitterClient();
-    const createdTweet = await client.v2.tweet({ text: text });
+    const { data: createdTweet } = await client.v2.tweet({ text: text });
     console.log("Tweeted!\n", createdTweet, "\n");
     return createdTweet;
   } catch (error) {
