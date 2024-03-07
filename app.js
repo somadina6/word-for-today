@@ -12,11 +12,13 @@ app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(bodyParser.json());
 app.use(routes);
 
-app.get('/',handleHome)
+app.get("/", handleHome);
 
-const port = process.env.PORT || 4000;
+console.log("Initial Starting");
+
+const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
 
-// module.exports = app;
+module.exports = app;

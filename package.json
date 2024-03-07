@@ -4,7 +4,7 @@
   "description": "This app posts daily bible verses on twitter",
   "main": "app.js",
   "scripts": {
-    "dev": "nodeman app.js",
+    "dev": "node app.js",
     "build": "node app.js"
   },
   "author": "Somadina Eze",
