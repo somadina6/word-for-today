@@ -5,8 +5,9 @@ async function postTweet(text) {
   try {
     console.log("Connecting to Twitter API");
     const client = await initializeTwitterClient();
-    await client.v2.tweet({ text: text });
-    console.log("Tweeted!\n", text, "\n");
+    const createdTweet = await client.v2.tweet({ text: text });
+    console.log("Tweeted!\n", createdTweet, "\n");
+    return createdTweet;
   } catch (error) {
     console.error(error)
     throw new Error(error)
@@ -27,10 +28,11 @@ async function tweetRandomVerseV2(req, res) {
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    await postTweet(tweet);
+    const createdTweet = await postTweet(tweet);
     res.status(200).json({
       success: true,
       message: "Tweeted Random!",
+      tweet: createdTweet,
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -55,10 +57,11 @@ async function tweetVOTDV2(req, res) {
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
 
-    await postTweet(tweet);
+    const createdTweet = await postTweet(tweet);
     res.status(200).json({
       success: true,
       message: "Tweeted Verse Of The Day 2",
+      tweet: createdTweet,
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -79,11 +82,12 @@ async function tweetRandomVerse(req, res) {
       throw new Error("Error retrieving verse from the API")
     }
     const tweet = `${text} - ${reference}`;
-    await postTweet(tweet);
+    const createdTweet = await postTweet(tweet);
 
     res.status(200).json({
       success: true,
       message: "Tweeted Random",
+      tweet: createdTweet,
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
@@ -107,11 +111,12 @@ async function tweetVOTD(req, res) {
     }
 
     const tweet = `${text} - ${reference}`;
-    await postTweet(tweet);
+     const createdTweet = await postTweet(tweet);
 
     res.status(200).json({
       success: true,
       message: "Tweeted Verse Of The Day",
+      tweet: createdTweet,
     });
   } catch (error) {
     console.error("Error tweeting: ", error);
