@@ -9,8 +9,8 @@ async function postTweet(text) {
     console.log("Tweeted!\n", createdTweet, "\n");
     return createdTweet;
   } catch (error) {
-    console.error(error)
-    throw new Error(error)
+    console.error(error);
+    throw new Error(error);
   }
 }
 
@@ -18,12 +18,12 @@ async function tweetRandomVerseV2(req, res) {
   try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("random");
 
-    if( !text || !bookname || !chapter || !verse){
+    if (!text || !bookname || !chapter || !verse) {
       res.status(501).json({
         success: false,
         message: "Error retrieving verse from the API",
-      })
-      throw new Error("Error retrieving verse from the API")
+      });
+      throw new Error("Error retrieving verse from the API");
     }
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
@@ -38,7 +38,7 @@ async function tweetRandomVerseV2(req, res) {
     console.error("Error tweeting: ", error);
     res.status(400).json({
       success: false,
-      message: error,
+      message: error.meesage,
     });
   }
 }
@@ -47,12 +47,12 @@ async function tweetVOTDV2(req, res) {
   try {
     const { bookname, chapter, verse, text } = await getRandomVerseV2("votd");
 
-     if( !text || !bookname || !chapter || !verse){
+    if (!text || !bookname || !chapter || !verse) {
       res.status(501).json({
         success: false,
         message: "Error retrieving verse from the API",
-      })
-      throw new Error("Error retrieving verse from the API")
+      });
+      throw new Error("Error retrieving verse from the API");
     }
 
     const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
@@ -67,19 +67,19 @@ async function tweetVOTDV2(req, res) {
     console.error("Error tweeting: ", error);
     res.status(400).json({
       success: false,
-      message: error.meesage,
+      message: error.message,
     });
   }
 }
 async function tweetRandomVerse(req, res) {
   try {
     const { reference, text } = await getRandomVerse("random");
-    if( !text || !reference ){
+    if (!text || !reference) {
       res.status(501).json({
         success: false,
         message: "Error retrieving verse from the API",
-      })
-      throw new Error("Error retrieving verse from the API")
+      });
+      throw new Error("Error retrieving verse from the API");
     }
     const tweet = `${text} - ${reference}`;
     const createdTweet = await postTweet(tweet);
@@ -93,7 +93,7 @@ async function tweetRandomVerse(req, res) {
     console.error("Error tweeting: ", error);
     res.status(400).json({
       success: false,
-      message: error.meesage,
+      message: error.message,
     });
   }
 }
@@ -101,17 +101,17 @@ async function tweetRandomVerse(req, res) {
 async function tweetVOTD(req, res) {
   try {
     const { reference, text } = await getRandomVerse("daily");
-    
-    if( !text || !reference ){
+
+    if (!text || !reference) {
       res.status(501).json({
         success: false,
         message: "Error retrieving verse from the API",
-      })
-      throw new Error("Error retrieving verse from the API")
+      });
+      throw new Error("Error retrieving verse from the API");
     }
 
     const tweet = `${text} - ${reference}`;
-     const createdTweet = await postTweet(tweet);
+    const createdTweet = await postTweet(tweet);
 
     res.status(200).json({
       success: true,
@@ -122,16 +122,16 @@ async function tweetVOTD(req, res) {
     console.error("Error tweeting: ", error);
     res.status(400).json({
       success: false,
-      message: error.meesage,
+      message: error.message,
     });
   }
 }
 
-async function handleHome(req,res) {
+async function handleHome(req, res) {
   res.status(200).json({
-    success:true,
-    message: "Word For Today API is live!"
-  })
+    success: true,
+    message: "Word For Today API is live!",
+  });
 }
 
 module.exports = {
@@ -140,5 +140,5 @@ module.exports = {
   tweetRandomVerse,
   tweetRandomVerseV2,
   postTweet,
-  handleHome
+  handleHome,
 };
