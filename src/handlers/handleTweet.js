@@ -26,7 +26,7 @@ async function tweetRandomVerseV2(req, res) {
       throw new Error("Error retrieving verse from the API");
     }
 
-    const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
+    const tweet = `${text} \n\n- ${bookname} ${chapter}:${verse}`;
 
     const createdTweet = await postTweet(tweet);
     res.status(200).json({
@@ -55,7 +55,7 @@ async function tweetVOTDV2(req, res) {
       throw new Error("Error retrieving verse from the API");
     }
 
-    const tweet = `${text} - ${bookname} ${chapter}:${verse}`;
+    const tweet = `${text} \n\n- ${bookname} ${chapter}:${verse}`;
 
     const createdTweet = await postTweet(tweet);
     res.status(200).json({
@@ -81,7 +81,7 @@ async function tweetRandomVerse(req, res) {
       });
       throw new Error("Error retrieving verse from the API");
     }
-    const tweet = `${text} - ${reference}`;
+    const tweet = `${text} \n\n- ${reference}`;
     const createdTweet = await postTweet(tweet);
 
     res.status(200).json({
@@ -110,7 +110,7 @@ async function tweetVOTD(req, res) {
       throw new Error("Error retrieving verse from the API");
     }
 
-    const tweet = `${text} - ${reference}`;
+    const tweet = `${text} \n\n- ${reference}`;
     const createdTweet = await postTweet(tweet);
 
     res.status(200).json({
